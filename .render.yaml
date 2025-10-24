@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: odoo-erp-web-ai
+    env: docker
+    plan: free
+    branch: feature/Frontend_WEB_AI_2D_3D
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: floorplan_project.settings
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PORT
+        value: 9000
+    postdeploy:
+      - python manage.py migrate --noinput
+      - python manage.py collectstatic --noinput
