@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gen Floorplan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'floorplan_app/css/style.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'floorplan_app/img/icon_vn.png' %}">
+</head>
+<body>
+  <div id="loadingOverlay" hidden>
+    <div class="loading-backdrop"></div>
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-message">Processing...</div>
+    </div>
+  </div>
+  <!-- Header -->
+  <div class="header">
+    <img src="{% static 'floorplan_app/img/icon_vnn.png' %}" alt="Logo">
+    <h1>GEN FLOORPLAN</h1>
+  </div>
+
+  <div class="container">
+    <!-- Main -->
+    <div class="main">
+      <div class="proposal" id="proposal1">
+        <h4>1st Proposal</h4>
+        <img src="{% static 'floorplan_app/img/proposal1.png' %}" alt="Floorplan 1">
+        <div class="area-plan{% if not latest_area_plan %} hidden{% endif %}" id="areaPlanInfo"{% if latest_area_plan %} data-initial-area="{{ latest_area_plan }}"{% endif %}>
+          {% if latest_area_plan %}Area Plan: {{ latest_area_plan|floatformat:2 }} m2{% endif %}
+        </div>
+        <div class="controls">
+          <button class="btn">Save</button>
+          <button class="btn">Rearrange</button>
+          <button class="btn">Advanced Edit</button>
+        </div>
+      </div>
+      <div class="proposal" id="proposal2">
+        <h4>2nd Proposal</h4>
+        <img src="{% static 'floorplan_app/img/proposal2.png' %}" alt="Floorplan 2">
+      </div>
+      <div class="proposal" id="proposal3">
+        <h4>3rd Proposal</h4>
+        <img src="{% static 'floorplan_app/img/proposal3.png' %}" alt="Floorplan 3">
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Unit</h3>
+      <div class="btn-group" id="unitBtns">
+        <button class="btn-toggle active" data-unit="metric">Metric</button>
+        <button class="btn-toggle" data-unit="imperial">Imperial</button>
+      </div>
+
+      <h3>Floors</h3>
+      <div class="btn-group" id="floorBtns">
+        <button class="btn-toggle active" data-floor="1">Floor 1</button>
+        <button class="btn-toggle locked" data-floor="2">Floor 2 <span class="lock-icon">🔒</span></button>
+        <button class="btn-toggle locked" data-floor="3">Floor 3 <span class="lock-icon">🔒</span></button>
+      </div>
+
+      <h3>Rooms</h3>
+      <div class="form-row">
+        <label>LDK</label>
+        <select id="ldkSelect">
+          <option value="1">1 LDK</option>
+          <option value="2">2 LDK</option>
+          <option value="3">3 LDK</option>
+          <option value="4">4 LDK</option>
+        </select>
+      </div>
+      <div class="room-grid">
+        <label><input type="checkbox"> Japan Style Room</label>
+        <label class="indent-right"><input type="checkbox"> Study Room</label>
+        <label><input type="checkbox"> Storage</label>
+        <label class="indent-right"><input type="checkbox"> Balcony</label>
+      </div>
+      <div class="form-row">
+        <label>Toilet</label>
+        <select id="toiletSelect">
+          <option value="1">1 toilet</option>
+          <option value="2">2 toilets</option>
+          <option value="3">3 toilets</option>
+        </select>
+      </div>
+
+      <h3>Land information</h3>
+      <button class="land-btn" onclick="openLandModal()">Land Setting</button>
+
+      <!-- Modal for Land Setting -->
+      <div id="landModal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <span class="close" onclick="closeLandModal()">&times;</span>
+          <h2>1. Enter the length and width of the lot</h2>
+          <div class="form-group">
+            <label for="vertical">Vertical:</label>
+            <select id="vertical" oninput="updateArea()">
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10" selected>10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+            <span>×</span>
+            <label for="yoko">Yoko:</label>
+            <select id="yoko" oninput="updateArea()">
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10" selected>10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
+            <span>= <span id="area">100</span> m²</span>
+          </div>
+
+          <h2>2. Enter the shape of the lot and select the location of the road</h2>
+            <div class="legend">
+              <div><div class="site-box assumed"></div> Assumed site</div>
+              <div><div class="site-box off-site"></div> Off-site</div>
+            </div>
+
+          <div class="grid-container">
+            <div id="landGrid" class="land-grid"></div>
+          </div>
+
+          <div class="modal-buttons">
+            <button class="btn-secondary" onclick="closeLandModal()">Close</button>
+            <button class="btn-primary" onclick="saveLandSettings()">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="generate-btn">Generate Plans</button>
+    </div>
+  </div>
+
+  <!-- Gallery bottom -->
+  <div class="gallery-bar" id="galleryBar">
+    <button class="close-gallery" id="closeGallery">&times;</button>
+    <button class="nav-btn" id="prev">Prev</button>
+    <img src="{% static 'floorplan_app/img/floorplan1.png' %}" alt="Plan 1" class="active">
+    <img src="{% static 'floorplan_app/img/floorplan2.png' %}" alt="Plan 2">
+    <img src="{% static 'floorplan_app/img/floorplan3.png' %}" alt="Plan 3">
+    <button class="nav-btn" id="next">Next</button>
+  </div>
+
+  <script src="{% static 'floorplan_app/js/script.js' %}"></script>
+</body>
+</html>
