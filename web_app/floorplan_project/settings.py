@@ -4,18 +4,17 @@ from pathlib import Path
 # Đường dẫn gốc
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY (phải luôn có, không để rỗng)
-SECRET_KEY = "%z1%450a$-oz(*tq#669j(^^4$$xkjih_jt4^#m)ht2j^)u-xy"
-
 # Debug mode
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # Khi DEBUG=True thì ALLOWED_HOSTS có thể để rỗng
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'odoo-erp-web-ai.onrender.com',
-]
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'odoo-erp-web-ai.onrender.com').split(',')
+
+# SECRET_KEY (phải luôn có, không để rỗng)
+SECRET_KEY = os.environ.get('SECRET_KEY', "%z1%450a$-oz(*tq#669j(^^4$$xkjih_jt4^#m)ht2j^)u-xy")
 
 # Ứng dụng cài đặt
 INSTALLED_APPS = [
