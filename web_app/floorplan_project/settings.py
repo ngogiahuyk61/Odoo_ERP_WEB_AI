@@ -11,7 +11,11 @@ SECRET_KEY = "%z1%450a$-oz(*tq#669j(^^4$$xkjih_jt4^#m)ht2j^)u-xy"
 DEBUG = True
 
 # Khi DEBUG=True thì ALLOWED_HOSTS có thể để rỗng
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'odoo-erp-web-ai.onrender.com',
+]
 
 # Ứng dụng cài đặt
 INSTALLED_APPS = [
