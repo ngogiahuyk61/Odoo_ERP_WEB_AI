@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # ⚡ thêm dòng này ngay sau SecurityMiddleware
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -81,12 +82,13 @@ USE_TZ = True
 
 # Static files
 STATIC_URL = "/static/"
-
 STATICFILES_DIRS = [
     BASE_DIR / "floorplan_app" / "static",  # chỗ chứa CSS, JS, img
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATIC_ROOT = BASE_DIR / "staticfiles"  # nơi collectstatic gom file
+# ⚡ Thêm cấu hình WhiteNoise
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Media (cho file upload sau này)
 MEDIA_URL = "/media/"
