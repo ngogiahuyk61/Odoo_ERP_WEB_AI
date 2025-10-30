@@ -1,0 +1,167 @@
+{
+  "Living Room": {
+    "num": 1,
+    "coordinates": [
+      {
+        "center": [
+          544,
+          397
+        ],
+        "bounding_box": [
+          228,
+          229,
+          567,
+          344
+        ],
+        "area_pixels": 93898
+      }
+    ]
+  },
+  "Master Room": {
+    "num": 1,
+    "coordinates": [
+      {
+        "center": [
+          687,
+          511
+        ],
+        "bounding_box": [
+          580,
+          453,
+          216,
+          118
+        ],
+        "area_pixels": 24930
+      }
+    ]
+  },
+  "Bathroom": {
+    "num": 2,
+    "coordinates": [
+      {
+        "center": [
+          351,
+          289
+        ],
+        "bounding_box": [
+          284,
+          227,
+          137,
+          125
+        ],
+        "area_pixels": 15350
+      },
+      {
+        "center": [
+          249,
+          289
+        ],
+        "bounding_box": [
+          222,
+          227,
+          54,
+          128
+        ],
+        "area_pixels": 5038
+      }
+    ]
+  },
+  "Common Room": {
+    "num": 2,
+    "coordinates": [
+      {
+        "center": [
+          495,
+          288
+        ],
+        "bounding_box": [
+          436,
+          230,
+          120,
+          117
+        ],
+        "area_pixels": 13559
+      },
+      {
+        "center": [
+          287,
+          527
+        ],
+        "bounding_box": [
+          229,
+          485,
+          119,
+          86
+        ],
+        "area_pixels": 9865
+      }
+    ]
+  },
+  "Entrance": {
+    "num": 1,
+    "coordinates": [
+      {
+        "center": [
+          535,
+          582
+        ],
+        "bounding_box": [
+          517,
+          577,
+          38,
+          10
+        ],
+        "area_pixels": 259.5
+      }
+    ]
+  },
+  "ExteriorWall": {
+    "num": 2,
+    "coordinates": [
+      {
+        "center": [
+          578,
+          326
+        ],
+        "bounding_box": [
+          212,
+          213,
+          599,
+          374
+        ],
+        "area_pixels": 6529
+      },
+      {
+        "center": [
+          301,
+          536
+        ],
+        "bounding_box": [
+          212,
+          374,
+          294,
+          213
+        ],
+        "area_pixels": 2321
+      }
+    ]
+  },
+  "InteriorWall": {
+    "num": 1,
+    "coordinates": [
+      {
+        "center": [
+          511,
+          511
+        ],
+        "bounding_box": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "area_pixels": 1046529
+      }
+    ]
+  }
+}
