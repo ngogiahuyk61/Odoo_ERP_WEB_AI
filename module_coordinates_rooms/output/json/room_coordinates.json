@@ -1,0 +1,211 @@
+{
+    "info": {
+        "description": "floorplan-rooms"
+    },
+    "images": [
+        {
+            "id": 1,
+            "width": 1024,
+            "height": 1024,
+            "file_name": "layout_final_clean.png"
+        }
+    ],
+    "annotations": [
+        {
+            "id": 0,
+            "iscrowd": 0,
+            "image_id": 1,
+            "category_id": 1,
+            "segmentation": [
+                [
+                    233.0,
+                    234.0,
+                    813.0,
+                    234.0,
+                    813.0,
+                    586.0,
+                    233.0,
+                    586.0
+                ]
+            ],
+            "bbox": [
+                233.0,
+                234.0,
+                581.0,
+                353.0
+            ],
+            "area": 204160.0
+        },
+        {
+            "id": 1,
+            "iscrowd": 0,
+            "image_id": 1,
+            "category_id": 6,
+            "segmentation": [
+                [
+                    593.0,
+                    463.0,
+                    814.0,
+                    463.0,
+                    814.0,
+                    583.0,
+                    593.0,
+                    583.0
+                ]
+            ],
+            "bbox": [
+                593.0,
+                463.0,
+                222.0,
+                121.0
+            ],
+            "area": 26520.0
+        },
+        {
+            "id": 2,
+            "iscrowd": 0,
+            "image_id": 1,
+            "category_id": 8,
+            "segmentation": [
+                [
+                    290.0,
+                    232.0,
+                    430.0,
+                    232.0,
+                    430.0,
+                    360.0,
+                    290.0,
+                    360.0
+                ]
+            ],
+            "bbox": [
+                290.0,
+                232.0,
+                141.0,
+                129.0
+            ],
+            "area": 17920.0
+        },
+        {
+            "id": 3,
+            "iscrowd": 0,
+            "image_id": 1,
+            "category_id": 8,
+            "segmentation": [
+                [
+                    227.0,
+                    363.0,
+                    227.0,
+                    232.0,
+                    282.0,
+                    232.0,
+                    282.0,
+                    363.0
+                ]
+            ],
+            "bbox": [
+                227.0,
+                232.0,
+                56.0,
+                132.0
+            ],
+            "area": 7205.0
+        },
+        {
+            "id": 4,
+            "iscrowd": 0,
+            "image_id": 1,
+            "category_id": 4,
+            "segmentation": [
+                [
+                    446.0,
+                    354.0,
+                    446.0,
+                    235.0,
+                    568.0,
+                    235.0,
+                    568.0,
+                    354.0
+                ]
+            ],
+            "bbox": [
+                446.0,
+                235.0,
+                123.0,
+                120.0
+            ],
+            "area": 14518.0
+        },
+        {
+            "id": 5,
+            "iscrowd": 0,
+            "image_id": 1,
+            "category_id": 4,
+            "segmentation": [
+                [
+                    234.0,
+                    584.0,
+                    234.0,
+                    496.0,
+                    355.0,
+                    496.0,
+                    355.0,
+                    584.0
+                ]
+            ],
+            "bbox": [
+                234.0,
+                496.0,
+                122.0,
+                89.0
+            ],
+            "area": 10648.0
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Living"
+        },
+        {
+            "id": 2,
+            "name": "Kitchen"
+        },
+        {
+            "id": 3,
+            "name": "Storage"
+        },
+        {
+            "id": 4,
+            "name": "Common"
+        },
+        {
+            "id": 5,
+            "name": "Dining"
+        },
+        {
+            "id": 6,
+            "name": "Master"
+        },
+        {
+            "id": 7,
+            "name": "Balcony"
+        },
+        {
+            "id": 8,
+            "name": "Bath"
+        },
+        {
+            "id": 9,
+            "name": "Frontdoor"
+        },
+        {
+            "id": 10,
+            "name": "Exterior wall"
+        },
+        {
+            "id": 11,
+            "name": "Interior wall"
+        }
+    ]
+}
